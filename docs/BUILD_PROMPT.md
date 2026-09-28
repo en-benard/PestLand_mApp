@@ -1,5 +1,7 @@
 # Build prompt — PestLand v1.0 for store publication
 
+For a first field pilot, use [`MVP_BUILD_PROMPT.md`](MVP_BUILD_PROMPT.md) instead; this prompt is the full release that follows it.
+
 Paste everything below the line into Claude Code (or another coding agent) opened on this repository.
 
 ---
