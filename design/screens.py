@@ -48,7 +48,8 @@ TRAP_INSECTS = [(_rnd.uniform(8, 92), _rnd.uniform(8, 92)) for _ in range(15)]  
 def art(kind):
     """Small SVG 'photographs' so the mockups need no copyrighted images."""
     bg = {"berry": "#3f6b2f", "egg": "#5a3b22", "larva": "#6b4a2a", "pupa": "#6b4a2a", "adult": "#7a5a32",
-          "field": "#6f9a45", "leaf": "#2f5d2a", "trap": "#f3e14a", "damage": "#44652d"}[kind]
+          "field": "#6f9a45", "leaf": "#2f5d2a", "trap": "#f3e14a", "damage": "#44652d",
+          "rust1": "#2f5d2a", "rust2": "#2f5d2a", "rust3": "#2f5d2a", "weed": "#7aa84f"}[kind]
     s = f'<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block;background:{bg}">'
     if kind == "berry":
         s += ('<circle cx="30" cy="40" r="18" fill="#5e9a3a"/><circle cx="62" cy="55" r="20" fill="#78b04a"/>'
@@ -74,6 +75,19 @@ def art(kind):
               + "".join(f'<circle cx="{x}" cy="{y}" r="{r}" fill="{c}"/>' for x, y, r, c in
                         [(15, 55, 11, "#3f6f2a"), (40, 52, 12, "#8b7a3a"), (65, 56, 11, "#3f6f2a"), (88, 53, 12, "#9a7d3c"),
                          (25, 80, 14, "#476f2c"), (55, 82, 15, "#a38a45"), (85, 84, 14, "#3f6f2a")]))
+    elif kind in ("rust1", "rust2", "rust3"):
+        n = {"rust1": 1, "rust2": 2, "rust3": 3}[kind]
+        s += '<path d="M50 8C22 30 18 68 50 94C82 68 78 30 50 8z" fill="%s"/><path d="M50 14v78" stroke="#4d7f30" stroke-width="2"/>' % ["#6fa84a", "#86a845", "#8f8a3a"][n - 1]
+        spots = [(40, 36, 3), (58, 52, 3.5), (44, 66, 3)] if n == 1 else [(38, 32, 6), (60, 44, 8), (42, 58, 7), (58, 70, 6), (48, 80, 4)] if n == 2 else [(38, 30, 10), (60, 42, 12), (40, 58, 12), (60, 70, 10), (48, 82, 7)]
+        for x, y, r in spots:
+            s += f'<circle cx="{x}" cy="{y}" r="{r}" fill="{"#e8a21a" if n < 3 else "#e07a12"}"/>'
+            if n == 3:
+                s += f'<circle cx="{x}" cy="{y}" r="{r * .45}" fill="#5a3a1a"/>'
+    elif kind == "weed":
+        s += ('<rect y="70" width="100" height="30" fill="#5a4a2a"/><path d="M50 72V20" stroke="#3f6a2a" stroke-width="3"/>'
+              '<ellipse cx="34" cy="38" rx="16" ry="9" fill="#3d6b35" transform="rotate(-25 34 38)"/><ellipse cx="66" cy="34" rx="17" ry="9" fill="#5a2a55" transform="rotate(25 66 34)"/>'
+              '<ellipse cx="32" cy="58" rx="15" ry="8" fill="#3d6b35" transform="rotate(-20 32 58)"/><ellipse cx="68" cy="56" rx="15" ry="8" fill="#5a2a55" transform="rotate(20 68 56)"/>'
+              '<path d="M28 38h14M58 34h16M24 58h14M60 56h14" stroke="#9cc28a" stroke-width="1"/>')
     elif kind == "leaf":
         s += ('<path d="M50 8C22 30 18 68 50 94C82 68 78 30 50 8z" fill="#6fa84a"/><path d="M50 14v78" stroke="#4d7f30" stroke-width="2"/>'
               '<circle cx="40" cy="34" r="3" fill="#c9b45a"/><circle cx="60" cy="50" r="7" fill="#8a5a2a" stroke="#e0cf6a" stroke-width="2.5"/>'
@@ -338,8 +352,86 @@ def s_click7():
     </div>''' + footer(f'{ic("check")} Attach count to report', 7, "sun")
 
 
+def s_disease():
+    return status() + appbar("Level & stage photos", "Disease: photograph each symptom stage", 4) + f'''
+    <div class="body">
+      <div class="note info" style="padding:8px 11px">{ic("leaf", 16)}<div><b>Coffee leaf rust</b> <i>Hemileia vastatrix</i> · stages ticked in Click 3: Early · Advancing · Late</div></div>
+      <div class="card"><div class="label">Infestation level <span class="tag auto">calculated</span></div>
+        <div class="row" style="gap:6px;margin-bottom:8px"><span class="small">Leaves checked</span><div class="field" style="padding:5px 9px;font-weight:700">60</div><span class="small">with rust</span><div class="field auto" style="padding:5px 9px;font-weight:700">14</div><span class="small">= 23%</span></div>
+        <div class="grid3">
+          <div class="chip" style="justify-content:center;flex-direction:column;gap:1px;padding:7px 4px">Low<span class="tiny">&lt; 10%</span></div>
+          <div class="chip on" style="justify-content:center;flex-direction:column;gap:1px;padding:7px 4px;background:var(--sun);border-color:var(--sun);color:#3b2600">Medium<span style="font-size:10.5px">10–30%</span></div>
+          <div class="chip" style="justify-content:center;flex-direction:column;gap:1px;padding:7px 4px">High<span class="tiny">&gt; 30%</span></div></div></div>
+      <div class="card"><div class="label">Photo for every symptom stage <span class="ok">3 / 3</span></div>
+        <div class="grid3">{photo("rust1", "Early · spots")}{photo("rust2", "Advancing")}{photo("rust3", "Late · necrosis")}</div>
+        <div class="tiny" style="margin-top:6px">Tip: turn the leaf over. Rust spores show on the underside.</div>
+        <div class="label" style="margin-top:12px">Damage evidence <span class="ok">2 / 2</span></div>
+        <div class="grid3">{photo("damage", "Close-up")}{photo("field", "Field view")}<div class="photo empty">{ic("cam", 22)}Add more</div></div>
+        <div class="note ai" style="margin-top:10px;padding:8px 10px">{ic("ai", 16)}<div>AI leaf-area estimate: 18% of leaf area infected on the sample photos</div></div></div>
+    </div>''' + footer("Next: action, area &amp; send", 4)
+
+
+def s_weed():
+    stages = [("Seedling", 0), ("Vegetative", 1), ("Flowering", 1), ("Seeding", 0)]
+    return status() + appbar("Identify the problem", "Weed / invasive plant branch", 3) + f'''
+    <div class="body">
+      <div class="card" style="padding:12px"><div class="row" style="align-items:flex-start">
+        <div style="width:92px;flex:none">{photo("weed", "Snap to identify", False)}</div>
+        <div style="flex:1"><div class="row" style="gap:6px;margin-bottom:6px"><span class="tag ai">{ic("ai", 11)} On-device AI</span></div>
+          <div class="row between"><div><b style="font-size:14px">Miconia</b><div class="tiny" style="font-style:italic">Miconia calvescens</div></div><b style="color:var(--brand-700)">91%</b></div>
+          <div style="height:5px;border-radius:3px;background:var(--line);margin:5px 0 7px"><div style="width:91%;height:100%;border-radius:3px;background:var(--brand-600)"></div></div>
+          <div class="row between tiny"><span>Clidemia (Koster's curse)</span><span>6%</span></div></div></div>
+        <div class="row" style="gap:8px;margin-top:10px"><div class="chip on" style="flex:1;justify-content:center">{ic("check", 14)} Confirm</div><div class="chip" style="flex:1;justify-content:center">Pick from list</div><div class="chip" style="flex:1;justify-content:center">Send to expert</div></div></div>
+      <div class="note warn" style="padding:8px 11px">{ic("alert", 16)}<div><b>Regulated noxious weed in Hawaiʻi.</b> This report will be forwarded to the agency in the region pack.</div></div>
+      <div class="card"><div class="label">Growth stages seen <span class="req">* each needs a photo</span></div>
+        <div class="grid2" style="grid-template-columns:repeat(4,1fr)">{"".join(f'<span class="chip {"on" if on else ""}" style="justify-content:center;padding:7px 3px;font-size:11.5px">{t}</span>' for t, on in stages)}</div>
+        <div class="label" style="margin-top:12px">Where is it growing?</div>
+        <div class="chips"><span class="chip">In the crop</span><span class="chip on">Field edge</span><span class="chip">Pasture</span><span class="chip">Forest / native</span><span class="chip">Waterway</span></div>
+        <div class="label" style="margin-top:12px">Cover (sets the level in Click 4)</div>
+        <div class="chips"><span class="chip">&lt; 5%</span><span class="chip on">5–25%</span><span class="chip">25–50%</span><span class="chip">&gt; 50%</span></div></div>
+    </div>''' + footer("Next: level &amp; photos", 3)
+
+
+def s_outbox():
+    item = lambda t, s, tag, prog="": f'''<div class="card" style="padding:11px 13px"><div class="row between"><b style="font-size:13.5px">{t}</b>{tag}</div>
+      <div class="tiny" style="margin-top:3px">{s}</div>{prog}</div>'''
+    bar = lambda pct: f'<div style="height:5px;border-radius:3px;background:var(--line);margin-top:8px"><div style="width:{pct}%;height:100%;border-radius:3px;background:var(--sky)"></div></div>'
+    return status() + appbar("Reports & sync", "Works fully offline") + f'''
+    <div class="body">
+      <div class="note warn">{ic("wifi", 18)}<div><b>No signal.</b> 3 reports are waiting. They will send automatically when you are back online, and never twice.</div></div>
+      <div class="chips"><span class="chip">Drafts 1</span><span class="chip">Ready 2</span><span class="chip on">Pending 3</span><span class="chip">Sent 6</span><span class="chip">Needs ID 1</span></div>
+      {item("Coffee berry borer · Coffee", "North Kona · 5 photos · 2.1 MB", '<span class="tag info">Pending</span>', bar(62))}
+      {item("Coffee leaf rust · Coffee", "South Kona · 5 photos · 1.8 MB", '<span class="tag info">Pending</span>', bar(0))}
+      {item("Miconia · field edge", "Hāmākua · 4 photos · 1.4 MB", '<span class="tag info">Pending</span>', bar(0))}
+      {item("Unknown leaf spot · Anthurium", "Puna · sent 18 Sep", '<span class="tag reg">Needs ID</span>')}
+      {item("Little fire ant · Banana", "Hilo · draft, Click 4 of 5", '<span class="tag auto">Draft</span>')}
+      <div class="tiny" style="text-align:center">Photos upload in pieces and resume after a dropped connection.</div>
+    </div>''' + footer(f'{ic("sync")} Send now when online', None, "ghost")
+
+
+def s_help():
+    row = lambda k, v, icn: f'<div class="row" style="padding:10px 0;border-top:1px solid var(--line)">{ic(icn, 18, "var(--brand-700)")}<div style="flex:1"><div class="tiny">{k}</div><div style="font-size:13.5px;font-weight:600">{v}</div></div></div>'
+    return status() + appbar("Profile & help") + f'''
+    <div class="body">
+      <div class="card"><div class="row"><div style="width:48px;height:48px;border-radius:50%;background:var(--brand-100);color:var(--brand-700);display:flex;align-items:center;justify-content:center">{ic("user", 26)}</div>
+        <div><b>Collector COL-042</b><div class="tiny">Role: collector · Hawaiʻi pack</div></div></div></div>
+      <div class="card" style="padding:4px 14px"><div class="label" style="margin:10px 0 2px">Support contact <span class="tag auto">set by region admin</span></div>
+        {row("Email", "support email for this region", "send")}
+        {row("Phone / hotline", "Hawaiʻi Pest Hotline 643-PEST", "alert")}
+        {row("Reporting agency", "HDOA Plant Quarantine", "shield")}</div>
+      <div class="card" style="padding:4px 14px"><div class="label" style="margin:10px 0 2px">Settings</div>
+        {row("Region pack", "Hawaiʻi · v2026.09 · 46 MB", "globe")}
+        {row("Language", "English · ʻŌlelo Hawaiʻi · Ilocano", "list")}
+        {row("Units", "acres · °F · mm", "area")}
+        {row("Upload photos on", "Wi-Fi and mobile data", "wifi")}</div>
+      <div class="tiny" style="text-align:center">Your name is never shown on public maps or exports.</div>
+    </div>
+    <div class="tabbar"><div>{ic("home")}Home</div><div>{ic("list")}Reports</div><div>{ic("map")}Map</div><div>{ic("ai")}AI Lab</div><div class="on">{ic("user")}Profile</div></div>'''
+
+
 SCREENS = {
     "00_region_pack": s_region, "01_home": s_home, "02_click1_where": s_click1, "03_click2_host": s_click2,
     "04_click3_problem": s_click3, "05_click4_level_photos": s_click4, "06_click5_action_area_submit": s_click5,
     "07_click6_risk_map": s_click6, "08_click7_ai_lab": s_click7,
+    "09_click3_weed": s_weed, "10_click4_disease_stages": s_disease, "11_outbox_sync": s_outbox, "12_profile_help": s_help,
 }

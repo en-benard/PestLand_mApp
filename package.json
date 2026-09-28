@@ -1,0 +1,7 @@
+{
+  "name": "pestland-docs",
+  "private": true,
+  "description": "Build tooling for the PestLand manual (Word export)",
+  "scripts": { "manual:docx": "node scripts/build_manual_docx.js" },
+  "devDependencies": { "docx": "^9.5.1" }
+}

@@ -13,14 +13,15 @@ Plant-health surveillance app for **any plant** (agricultural, horticultural, or
 
 | Path | What |
 |---|---|
-| [`docs/PestLand_User_Manual.md`](docs/PestLand_User_Manual.md) / [`.pdf`](docs/PestLand_User_Manual.pdf) | **User manual** with screens for every click |
+| [`docs/PestLand_User_Manual.docx`](docs/PestLand_User_Manual.docx) | **User manual (Word)** in the CropProtect manual style: brief description + how to fill it + screenshot for every field |
+| [`docs/PestLand_User_Manual.md`](docs/PestLand_User_Manual.md) / [`.pdf`](docs/PestLand_User_Manual.pdf) | Same manual as Markdown and PDF |
 | [`docs/TECHNICAL_SPEC.md`](docs/TECHNICAL_SPEC.md) | PERN + C++ architecture, region packs, AI pipeline, sync, CropProtect field mapping |
 | `docs/images/` | Screen mockups, diagrams and analysis charts (PNG) |
 | `design/` | HTML/CSS sources of the mockups and diagrams, plus `render.py` |
 | `config/regions/` | Sample region-pack manifests: `us-hi`, `gu`, `us`, `au`, `pg`, `ke` |
 | `db/schema.sql` | PostgreSQL + PostGIS + h3-pg schema |
 | `data/incident_reports_anonymized.csv` | 38,762 CropProtect reports with collector names pseudonymized and GPS rounded to about 110 m |
-| `scripts/` | Anonymizer, analysis figures, PDF builder |
+| `scripts/` | Anonymizer, analysis figures, PDF and Word builders |
 
 Stack: React Native + Expo + NativeWind (Tailwind) · Node 22 + Express 5 · PostgreSQL 17 + PostGIS + h3-pg · React 19 + Vite + Tailwind v4 web console · C++ JSI modules (ONNX Runtime / LiteRT, H3, geometry).
 

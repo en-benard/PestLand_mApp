@@ -171,6 +171,17 @@ Tap **Next: problem** (click 2).
 4. **Life stages seen:** tick every stage you actually saw (Egg · Larva/Nymph · Pupa · Adult). For diseases the stages are *Early · Advancing · Late*. **Each ticked stage needs its own photo in Click 4.**
 5. **Part affected** and **Signs & symptoms:** multi-select. These lists are filtered to the chosen problem.
 
+### 7.1 Weed branch
+
+![Click 3, weed branch](images/screens/09_click3_weed.png)
+
+If you picked **Weed** in Click 1, Click 3 shows weed lists on the same screen. CropProtect had a separate weed form.
+
+- **Weed:** confirm the AI answer (e.g. *Miconia*, a regulated noxious weed in Hawaiʻi), pick from the list or send to an expert.
+- **Growth stages seen:** Seedling · Vegetative · Flowering · Seeding. Each ticked stage needs a photo in Click 4.
+- **Where is it growing?** In the crop · Field edge · Pasture · Forest/native · Waterway.
+- **Cover:** < 5 % · 5–25 % · 25–50 % · > 50 %. This sets the weed's level, so weed reports get a level too. In the CropProtect export all 4,419 weed reports had no level.
+
 > The AI is an assistant, not the final word. Your confirmed choice is what is recorded, and the AI's answer is stored alongside it so experts can check both.
 
 Tap **Next: level & photos** (click 3).
@@ -206,6 +217,12 @@ As soon as the level is set, PestLand opens **one camera slot for every stage yo
 - **Add more:** optional extra photos
 
 The **Next** button stays locked until every ticked stage has a photo that passes the automatic quality check (focus, light, stage visible). Every photo is stamped with GPS and time. When the AI can count (adults on a berry, insects on a trap), the count appears on the photo, e.g. *Adult ♀ · 14 counted*.
+
+### 8.3 Disease example: one photo per symptom stage
+
+![Click 4, disease stages](images/screens/10_click4_disease_stages.png)
+
+For a disease the stages are **symptom stages**. In this coffee leaf rust example the collector ticked *Early*, *Advancing* and *Late* in Click 3, so Click 4 opens three stage slots. The level comes from leaves checked and leaves with rust (60 checked, 14 with rust = 23 % = Medium under this example rule). The AI also estimates the % of leaf area infected.
 
 ![Stage photo guide](images/diagrams/photo_stage_guide.png)
 
@@ -250,6 +267,8 @@ In the CropProtect export, rainfall was blank in 88 % of reports. Filling it aut
 ---
 
 ## 10. Working offline & sync
+
+![Reports and sync](images/screens/11_outbox_sync.png)
 
 Every report moves through clear states, as in ODK:
 
@@ -381,9 +400,11 @@ For teams moving from CropProtect. Every CropProtect field is kept or improved.
 
 ## 15. Data, privacy & support
 
+![Profile and help](images/screens/12_profile_help.png)
+
 - **Your reports** belong to the programme that runs your region pack. Reviewers in your region see them. The public risk map shows only hexagon summaries, never individual farms.
 - **Personal details:** collector names are never published. Exports use pseudonymous collector IDs (e.g. `COL-042`). The CropProtect sample data in this repository has had collector names replaced this way and GPS rounded to about 100 m. It contained no email or phone columns.
 - **Photos** keep their GPS and time for audit and are shared only through signed links.
-- **Support:** use **Profile › Help** in the app. It shows the support email and phone number that your region admin has set for your region pack.
+- **Support:** use **Profile › Help** in the app. It shows the support email, phone or hotline and reporting agency that your region admin has set for your region pack.
 
 *Well done. Every report you send makes the risk map sharper for everyone in your region.*

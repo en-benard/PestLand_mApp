@@ -135,5 +135,6 @@ pip install playwright pandas matplotlib
 python design/render.py              # docs/images/screens + diagrams (HTML mockups -> PNG)
 python scripts/analyze_incidents.py  # docs/images/analysis
 python scripts/build_manual_pdf.py   # docs/PestLand_User_Manual.pdf
+npm install && npm run manual:docx   # docs/PestLand_User_Manual.docx
 ```
 Mockup sources are plain HTML/CSS in `design/`: edit `screens.py`, `diagrams.py` or `base.css` and re-run.
