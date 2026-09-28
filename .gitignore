@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+design/_tmp.html
+docs/_manual.html
+node_modules/

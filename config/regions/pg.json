@@ -1,0 +1,104 @@
+{
+  "id": "pg",
+  "name": "Papua New Guinea",
+  "version": "2026.09",
+  "bbox": [
+    140.8,
+    -11.7,
+    156.0,
+    -0.8
+  ],
+  "admin_levels": [
+    "province",
+    "district",
+    "llg",
+    "ward"
+  ],
+  "admin_boundaries": "boundaries/pg.geojson",
+  "languages": [
+    "en",
+    "tpi",
+    "ho"
+  ],
+  "units": {
+    "area": "hectare",
+    "temperature": "C",
+    "rain": "mm"
+  },
+  "timezone": "Pacific/Port_Moresby",
+  "authority": {
+    "name": "NAQIA – National Agriculture Quarantine and Inspection Authority",
+    "report_channel": "set by region admin",
+    "notify_on": [
+      "regulated",
+      "quarantine",
+      "new_to_region"
+    ]
+  },
+  "host_sectors": [
+    "field_crops",
+    "fruit_veg",
+    "tree_crops",
+    "ornamental_nursery",
+    "forest_native",
+    "turf_pasture"
+  ],
+  "sample_problems": [
+    {
+      "id": "conopomorpha_cramerella",
+      "name": "Cocoa pod borer",
+      "type": "insect",
+      "status": "established",
+      "stages": [
+        "egg",
+        "larva",
+        "pupa",
+        "adult"
+      ]
+    },
+    {
+      "id": "hypothenemus_hampei",
+      "name": "Coffee berry borer",
+      "type": "insect",
+      "status": "regulated",
+      "stages": [
+        "egg",
+        "larva",
+        "pupa",
+        "adult"
+      ]
+    },
+    {
+      "id": "oryctes_rhinoceros",
+      "name": "Coconut rhinoceros beetle",
+      "type": "insect",
+      "status": "established",
+      "stages": [
+        "larva",
+        "pupa",
+        "adult"
+      ]
+    },
+    {
+      "id": "spodoptera_frugiperda",
+      "name": "Fall armyworm",
+      "type": "insect",
+      "status": "established",
+      "stages": [
+        "egg",
+        "larva",
+        "pupa",
+        "adult"
+      ]
+    }
+  ],
+  "low_connectivity": {
+    "sms_fallback": true,
+    "photo_max_kb": 350
+  },
+  "ai_model": {
+    "file": "models/pacific-det-v3.onnx",
+    "classes": 260
+  },
+  "offline_map": "tiles/pg.pmtiles"
+}

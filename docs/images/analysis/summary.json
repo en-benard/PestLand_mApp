@@ -1,0 +1,15 @@
+{
+  "rows": 38762,
+  "pest_disease": 34187,
+  "weed": 4547,
+  "gps_mismatch_main_counties": 381,
+  "gps_mismatch_pct": 1.0,
+  "unknown_disease": 1458,
+  "missing_pest_photo_pct": 0.0,
+  "missing_rainfall_pct": 88.3,
+  "level_counts": {
+    "MEDIUM": 17612,
+    "LOW": 10910,
+    "HIGH": 5821
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "au",
+  "name": "Australia",
+  "version": "2026.09",
+  "bbox": [
+    112.9,
+    -43.7,
+    153.7,
+    -10.0
+  ],
+  "admin_levels": [
+    "state_territory",
+    "lga",
+    "locality"
+  ],
+  "extra_layers": [
+    "biosecurity_zone"
+  ],
+  "admin_boundaries": "boundaries/au.geojson",
+  "languages": [
+    "en"
+  ],
+  "units": {
+    "area": "hectare",
+    "temperature": "C",
+    "rain": "mm"
+  },
+  "timezone": "by_state",
+  "authority": {
+    "name": "State/territory biosecurity agency",
+    "report_channel": "Exotic Plant Pest Hotline 1800 084 881",
+    "notify_on": [
+      "exotic",
+      "regulated",
+      "new_to_region"
+    ]
+  },
+  "host_sectors": [
+    "field_crops",
+    "fruit_veg",
+    "tree_crops",
+    "ornamental_nursery",
+    "forest_native",
+    "turf_pasture"
+  ],
+  "sample_problems": [
+    {
+      "id": "spodoptera_frugiperda",
+      "name": "Fall armyworm",
+      "type": "insect",
+      "status": "established",
+      "stages": [
+        "egg",
+        "larva",
+        "pupa",
+        "adult"
+      ],
+      "severity": {
+        "method": "famews_plants_with_damage",
+        "unit": "%",
+        "thresholds": {
+          "low": [
+            0,
+            10
+          ],
+          "medium": [
+            10,
+            30
+          ],
+          "high": [
+            30,
+            100
+          ]
+        }
+      }
+    },
+    {
+      "id": "bactrocera_tryoni",
+      "name": "Queensland fruit fly",
+      "type": "insect",
+      "status": "regulated",
+      "stages": [
+        "egg",
+        "larva",
+        "pupa",
+        "adult"
+      ]
+    },
+    {
+      "id": "fusarium_tr4",
+      "name": "Panama disease TR4",
+      "type": "disease",
+      "status": "regulated",
+      "stages": [
+        "early",
+        "advancing",
+        "late"
+      ]
+    },
+    {
+      "id": "xylella_fastidiosa",
+      "name": "Xylella",
+      "type": "disease",
+      "status": "exotic",
+      "stages": [
+        "early",
+        "advancing",
+        "late"
+      ]
+    }
+  ],
+  "ai_model": {
+    "file": "models/au-det-v3.onnx",
+    "classes": 530
+  },
+  "offline_map": "tiles/au-{state}.pmtiles"
+}

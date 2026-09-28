@@ -1,0 +1,87 @@
+{
+  "id": "gu",
+  "name": "Guam",
+  "version": "2026.09",
+  "parent": "us",
+  "bbox": [
+    144.6,
+    13.2,
+    145.0,
+    13.7
+  ],
+  "admin_levels": [
+    "territory",
+    "village"
+  ],
+  "optional_place_label": "Place / farm",
+  "admin_boundaries": "boundaries/gu.geojson",
+  "languages": [
+    "en",
+    "ch"
+  ],
+  "units": {
+    "area": "acre",
+    "temperature": "F",
+    "rain": "mm"
+  },
+  "timezone": "Pacific/Guam",
+  "authority": {
+    "name": "Guam Department of Agriculture – Biosecurity",
+    "report_channel": "set by region admin",
+    "notify_on": [
+      "regulated",
+      "quarantine",
+      "new_to_region"
+    ]
+  },
+  "host_sectors": [
+    "field_crops",
+    "fruit_veg",
+    "tree_crops",
+    "ornamental_nursery",
+    "forest_native",
+    "turf_pasture"
+  ],
+  "sample_problems": [
+    {
+      "id": "oryctes_rhinoceros",
+      "name": "Coconut rhinoceros beetle",
+      "type": "insect",
+      "status": "established",
+      "stages": [
+        "larva",
+        "pupa",
+        "adult"
+      ]
+    },
+    {
+      "id": "aulacaspis_yasumatsui",
+      "name": "Cycad aulacaspis scale",
+      "type": "insect",
+      "status": "established",
+      "hosts": [
+        "cycas_micronesica"
+      ],
+      "stages": [
+        "crawler",
+        "nymph",
+        "adult"
+      ]
+    },
+    {
+      "id": "wasmannia_auropunctata",
+      "name": "Little fire ant",
+      "type": "insect",
+      "status": "established",
+      "stages": [
+        "worker",
+        "queen"
+      ]
+    }
+  ],
+  "ai_model": {
+    "file": "models/pacific-det-v3.onnx",
+    "classes": 260
+  },
+  "offline_map": "tiles/gu.pmtiles"
+}

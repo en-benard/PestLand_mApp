@@ -1,0 +1,52 @@
+{
+  "id": "ke",
+  "name": "Kenya",
+  "version": "2026.09",
+  "migrated_from": "CropProtect v01_2024",
+  "bbox": [
+    33.9,
+    -4.7,
+    41.9,
+    5.0
+  ],
+  "admin_levels": [
+    "county",
+    "sub_county",
+    "ward"
+  ],
+  "optional_place_label": "Village",
+  "admin_boundaries": "boundaries/ke.geojson",
+  "languages": [
+    "en",
+    "sw"
+  ],
+  "units": {
+    "area": "acre",
+    "temperature": "C",
+    "rain": "mm"
+  },
+  "timezone": "Africa/Nairobi",
+  "authority": {
+    "name": "County plant-protection office",
+    "report_channel": "set by region admin",
+    "notify_on": [
+      "regulated",
+      "quarantine",
+      "new_to_region"
+    ]
+  },
+  "host_sectors": [
+    "field_crops",
+    "fruit_veg",
+    "tree_crops",
+    "ornamental_nursery",
+    "forest_native",
+    "turf_pasture"
+  ],
+  "seed_data": "data/incident_reports_anonymized.csv",
+  "ai_model": {
+    "file": "models/ke-det-v3.onnx",
+    "classes": 180
+  },
+  "offline_map": "tiles/ke.pmtiles"
+}

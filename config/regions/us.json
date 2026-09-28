@@ -1,0 +1,65 @@
+{
+  "id": "us",
+  "name": "USA mainland",
+  "version": "2026.09",
+  "children_by": "state (FIPS)",
+  "admin_levels": [
+    "state",
+    "county"
+  ],
+  "languages": [
+    "en",
+    "es"
+  ],
+  "units": {
+    "area": "acre",
+    "temperature": "F",
+    "rain": "in"
+  },
+  "authority": {
+    "name": "State Dept. of Agriculture + USDA APHIS PPQ",
+    "report_channel": "set per state pack",
+    "notify_on": [
+      "regulated",
+      "quarantine",
+      "new_to_region"
+    ]
+  },
+  "host_sectors": [
+    "field_crops",
+    "fruit_veg",
+    "tree_crops",
+    "ornamental_nursery",
+    "forest_native",
+    "turf_pasture"
+  ],
+  "sample_problems": [
+    {
+      "id": "lycorma_delicatula",
+      "name": "Spotted lanternfly",
+      "type": "insect",
+      "status": "regulated",
+      "stages": [
+        "egg_mass",
+        "nymph_early",
+        "nymph_red",
+        "adult"
+      ]
+    },
+    {
+      "id": "agrilus_planipennis",
+      "name": "Emerald ash borer",
+      "type": "insect",
+      "status": "regulated",
+      "stages": [
+        "larva",
+        "adult"
+      ]
+    }
+  ],
+  "ai_model": {
+    "file": "models/us-det-v3.onnx",
+    "classes": 640
+  },
+  "offline_map": "tiles/us-{state}.pmtiles"
+}

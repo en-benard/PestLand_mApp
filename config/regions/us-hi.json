@@ -1,0 +1,206 @@
+{
+  "id": "us-hi",
+  "name": "Hawaiʻi, USA",
+  "version": "2026.09",
+  "parent": "us",
+  "bbox": [
+    -160.3,
+    18.8,
+    -154.7,
+    22.3
+  ],
+  "admin_levels": [
+    "state",
+    "island",
+    "county",
+    "district"
+  ],
+  "optional_place_label": "Place / ahupuaʻa / farm",
+  "admin_boundaries": "boundaries/us-hi.geojson",
+  "languages": [
+    "en",
+    "haw",
+    "ilo"
+  ],
+  "units": {
+    "area": "acre",
+    "temperature": "F",
+    "rain": "mm"
+  },
+  "timezone": "Pacific/Honolulu",
+  "authority": {
+    "name": "Hawaiʻi Department of Agriculture – Plant Quarantine",
+    "report_channel": "Hawaiʻi Pest Hotline 643-PEST (808-643-7378)",
+    "notify_on": [
+      "regulated",
+      "quarantine",
+      "new_to_region"
+    ]
+  },
+  "host_sectors": [
+    "field_crops",
+    "fruit_veg",
+    "tree_crops",
+    "ornamental_nursery",
+    "forest_native",
+    "turf_pasture"
+  ],
+  "sample_hosts": [
+    {
+      "id": "coffea_arabica",
+      "name": "Coffee",
+      "sector": "tree_crops",
+      "stages": [
+        "flowering",
+        "green_berry",
+        "ripening",
+        "harvest",
+        "dormant_pruned"
+      ]
+    },
+    {
+      "id": "macadamia_integrifolia",
+      "name": "Macadamia",
+      "sector": "tree_crops",
+      "stages": [
+        "flowering",
+        "nut_set",
+        "nut_fill",
+        "harvest"
+      ]
+    },
+    {
+      "id": "metrosideros_polymorpha",
+      "name": "ʻŌhiʻa lehua",
+      "sector": "forest_native",
+      "stages": [
+        "seedling",
+        "sapling",
+        "mature"
+      ]
+    },
+    {
+      "id": "anthurium_andraeanum",
+      "name": "Anthurium",
+      "sector": "ornamental_nursery",
+      "stages": [
+        "vegetative",
+        "flowering"
+      ]
+    }
+  ],
+  "sample_problems": [
+    {
+      "id": "hypothenemus_hampei",
+      "name": "Coffee berry borer",
+      "type": "insect",
+      "status": "established",
+      "hosts": [
+        "coffea_arabica"
+      ],
+      "stages": [
+        "egg",
+        "larva",
+        "pupa",
+        "adult"
+      ],
+      "severity": {
+        "method": "berries_bored_per_100",
+        "unit": "%",
+        "thresholds": {
+          "low": [
+            0,
+            5
+          ],
+          "medium": [
+            5,
+            20
+          ],
+          "high": [
+            20,
+            100
+          ]
+        }
+      }
+    },
+    {
+      "id": "hemileia_vastatrix",
+      "name": "Coffee leaf rust",
+      "type": "disease",
+      "status": "established",
+      "hosts": [
+        "coffea_arabica"
+      ],
+      "stages": [
+        "early",
+        "advancing",
+        "late"
+      ]
+    },
+    {
+      "id": "oryctes_rhinoceros",
+      "name": "Coconut rhinoceros beetle",
+      "type": "insect",
+      "status": "regulated",
+      "hosts": [
+        "cocos_nucifera"
+      ],
+      "stages": [
+        "larva",
+        "pupa",
+        "adult"
+      ]
+    },
+    {
+      "id": "wasmannia_auropunctata",
+      "name": "Little fire ant",
+      "type": "insect",
+      "status": "regulated",
+      "hosts": [
+        "*"
+      ],
+      "stages": [
+        "worker",
+        "queen"
+      ]
+    },
+    {
+      "id": "ceratocystis_lukuohia",
+      "name": "Rapid ʻŌhiʻa Death",
+      "type": "disease",
+      "status": "regulated",
+      "hosts": [
+        "metrosideros_polymorpha"
+      ],
+      "stages": [
+        "early",
+        "advancing",
+        "late"
+      ]
+    }
+  ],
+  "severity_default": {
+    "method": "percent_plants_affected",
+    "thresholds": {
+      "low": [
+        0,
+        10
+      ],
+      "medium": [
+        10,
+        30
+      ],
+      "high": [
+        30,
+        100
+      ]
+    }
+  },
+  "control_products": "products/us-hi.json",
+  "ai_model": {
+    "file": "models/us-hi-det-v3.onnx",
+    "labels": "models/us-hi-det-v3.labels.json",
+    "classes": 412
+  },
+  "offline_map": "tiles/us-hi.pmtiles"
+}
