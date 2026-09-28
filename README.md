@@ -15,6 +15,7 @@ Plant-health surveillance app for **any plant** (agricultural, horticultural, or
 |---|---|
 | [`docs/PestLand_User_Manual.docx`](docs/PestLand_User_Manual.docx) | **User manual (Word)** in the CropProtect manual style: brief description + how to fill it + screenshot for every field |
 | [`docs/PestLand_User_Manual.md`](docs/PestLand_User_Manual.md) / [`.pdf`](docs/PestLand_User_Manual.pdf) | Same manual as Markdown and PDF |
+| [`docs/BUILD_PROMPT.md`](docs/BUILD_PROMPT.md) | **Prompt for a coding agent** to build the publishable app from these docs |
 | [`docs/TECHNICAL_SPEC.md`](docs/TECHNICAL_SPEC.md) | PERN + C++ architecture, region packs, AI pipeline, sync, CropProtect field mapping |
 | `docs/images/` | Screen mockups, diagrams and analysis charts (PNG) |
 | `design/` | HTML/CSS sources of the mockups and diagrams, plus `render.py` |
